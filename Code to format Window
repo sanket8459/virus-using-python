@@ -1,0 +1,23 @@
+import os
+import shutil
+
+# Define paths to clean (customize for your lab)
+paths_to_clean = [
+    r"C:",
+    r"C:\Users\Student\Desktop\lab_temp",
+    r"C:\CEH-Lab\Output"
+]
+
+for path in paths_to_clean:
+    if os.path.exists(path):
+        try:
+            if os.path.isfile(path):
+                os.remove(path)
+                print(f"Deleted file: {path}")
+            else:
+                shutil.rmtree(path)
+                print(f"Deleted folder: {path}")
+        except Exception as e:
+            print(f"Failed to delete {path}: {e}")
+    else:
+        print(f"Path not found: {path}")
